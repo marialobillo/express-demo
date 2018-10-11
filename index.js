@@ -9,6 +9,7 @@ const helmet = require('helmet')
 const debug = require('debug')('app:startup')
 //const dbDebugger = require('debug')('app:db')
 
+// View engine
 app.set('view engine', 'pug')
 app.set('views', './views')
 
@@ -42,8 +43,13 @@ const courses = [
   { id: 3, name: 'Javascript'},
 ]
 
+
+// Routes
 app.get('/', (req, res) => {
-  res.send('Hello World')
+  res.render('index', {
+    title: 'My Express App',
+    message: 'Hello'
+  })
 })
 app.get('/api/courses', (req, res) => {
   res.send(courses);
